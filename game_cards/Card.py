@@ -2,6 +2,14 @@
 class Card:
     """Every card has two properties: a value and a suit"""
     def __init__(self,value,suit):
+        if 1>value or value>13:
+            raise ValueError("Invalid card value: must be between 1-13 (includes)")
+        if 1>suit or suit>4:
+            raise ValueError("Invalid card suit: must be between 1-4 (includes)")
+        if type(value) != int:
+            raise TypeError("Invalid card value: must be of integer class")
+        if type(suit) != int:
+            raise TypeError("Invalid suit value: must be of integer class")
         self.card_value = value
         self.card_suit = suit
 
