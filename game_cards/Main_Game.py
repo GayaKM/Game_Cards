@@ -6,6 +6,10 @@ from game_cards.Player import Player
 player1 = Player(input("Enter name of player 1: "))
 player2 = Player(input("Enter name of player 2: "))
 this_game = CardGame(player1, player2)
+
+# so that new_game couldn't be used in the main-USED_TO_BE_BUG
+this_game.in_cardgame = False
+
 print(this_game)
 
 for i in range(10):
