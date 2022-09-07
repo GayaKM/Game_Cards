@@ -137,6 +137,42 @@ class TestCard(TestCase):
             self.card.__gt__(other)
 
     #Test __eq__ Card
+
+
+    def test__eq__invalid_values(self):
+        """Function that test that indeed the program will raise if the value of one of the cards is incourrect and __eq__ won't happen"""
+        with self.assertRaises(ValueError):
+            self.assertFalse(card=Card(14, 2).__eq__(other=Card(2, 2)))
+        with self.assertRaises(ValueError):
+            self.assertFalse(card=Card(12, 2).__eq__(other=Card(0, 2)))
+
+    def test__eq__invalid_suits(self):
+        """Function that test that indeed the program will raise if the suit of one of the cards is incourrect and __eq__ won't happen"""
+        with self.assertRaises(ValueError):
+            self.assertFalse(card=Card(9, 5).__eq__(other=Card(8, 1)))
+        with self.assertRaises(ValueError):
+            self.assertFalse(card=Card(6, 4).__eq__(other=Card(7, 0)))
+
+    def test__eq__invalid_other_type(self):
+        """Function that test if the program raise with Type error when get's classes of other that isn't Card class"""
+        with self.assertRaises(TypeError):
+            other = 2
+            self.card.__eq__(other)
+        with self.assertRaises(TypeError):
+            other = "2"
+            self.card.__eq__(other)
+        with self.assertRaises(TypeError):
+            other = [1, 2, 3, 4]
+            self.card.__eq__(other)
+        with self.assertRaises(TypeError):
+            other = (1, 2, 3, 4)
+            self.card.__eq__(other)
+        with self.assertRaises(TypeError):
+            other = {1: 2, 3: 4}
+            self.card.__eq__(other)
+
+
+
     def test_suit_name(self):
         self.fail()
 
