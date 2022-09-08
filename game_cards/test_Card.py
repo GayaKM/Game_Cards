@@ -2,11 +2,11 @@ from unittest import TestCase, mock
 from unittest.mock import patch
 from Card import Card
 
-
 class TestCard(TestCase):
+
     def setUp(self):
         """Function that works automatically before any test, and gives the variants for the test"""
-        self.card=Card(5,3)
+        self.card = Card(5,3)
         print("setUp")
 
     def tearDown(self):

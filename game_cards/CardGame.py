@@ -6,6 +6,10 @@ class CardGame:
     def __init__(self, player1:Player, player2:Player):
         """Function that gets the players' names, the number of their cards
         and calls the function new_game, which is described below"""
+        # check that each one of the player has the same amount of cards--USED_TO_BE_BUG
+        if player1.player_cards != player2.player_cards:
+            player2= Player(player2.player_name, player1.player_cards)
+
         self.player1 = player1
         self.player2 = player2
         self.in_cardgame= True

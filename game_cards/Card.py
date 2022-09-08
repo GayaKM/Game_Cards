@@ -1,7 +1,9 @@
 """Class that has a description of every card in the game"""
 class Card:
-    """Every card has two properties: a value and a suit"""
+
     def __init__(self,value,suit):
+        """Function that receives a value of a card and a suit of that card.
+         every card has two properties: a value and a suit"""
         # chack that value and suit are in their range -USED_TO_BE_BUG
         if 1>value or value>13:
             raise ValueError("Invalid card value: must be between 1-13 (includes)")
