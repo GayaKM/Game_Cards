@@ -10,6 +10,12 @@ class CardGame:
         if player1.player_cards != player2.player_cards:
             player2= Player(player2.player_name, player1.player_cards)
 
+        # checks if the type of players is Player -ADDED_TO_BE_GLOBAL
+        if type(player1) != Player:
+            raise TypeError("Invalid type, must be of player!")
+        if type(player2) != Player:
+            raise TypeError("Invalid type, must be of player!")
+
         self.player1 = player1
         self.player2 = player2
         self.in_cardgame= True
