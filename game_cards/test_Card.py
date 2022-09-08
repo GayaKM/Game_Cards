@@ -13,7 +13,7 @@ class TestCard(TestCase):
         """Function that runs automatically after any test and closes the test"""
         print("tearDown")
 
-   #Test __init__ Card
+    #Test __init__ Card
     def test__init__valid(self):
         """Function that test if the __init__ of Card worked in the set up and the values and suits are valid"""
         self.assertEqual(self.card.card_value, 5)
@@ -104,6 +104,7 @@ class TestCard(TestCase):
         other= Card(5,3)
         self.assertFalse(self.card.__gt__(other))
 
+    # unnassery test- chack other function workes
     def test__gt__invalid_values(self):
         """Function that test that indeed the program will raise if the value of one of the cards is incourrect and __gt__ won't happen"""
         with self.assertRaises(ValueError):
@@ -111,6 +112,7 @@ class TestCard(TestCase):
         with self.assertRaises(ValueError):
             self.assertFalse(card=Card(12, 3).__gt__(other=Card(0, 3)))
 
+    # unnassery test- chack other function workes
     def test__gt__invalid_suits(self):
         """Function that test that indeed the program will raise if the suit of one of the cards is incourrect and __gt__ won't happen"""
         with self.assertRaises(ValueError):
@@ -137,8 +139,32 @@ class TestCard(TestCase):
             self.card.__gt__(other)
 
     #Test __eq__ Card
+    def test__eq__valid_true(self):
+        """Function that test return true when the value of card and other are the same"""
+        other= Card(5,4)
+        self.assertTrue(self.card.__eq__(other))
+        other = Card(5, 2)
+        self.assertTrue(self.card.__eq__(other))
+        other = Card(5, 1)
+        self.assertTrue(self.card.__eq__(other))
 
+    def test__eq__valid_false(self):
+        """Function that test return false when the value of card and other are diffrent"""
+        other= Card(10,4)
+        self.assertFalse(self.card.__eq__(other))
+        other = Card(13, 2)
+        self.assertFalse(self.card.__eq__(other))
+        other = Card(8, 1)
+        self.assertFalse(self.card.__eq__(other))
 
+    def test__eq__valid_eq_suit(self):
+        """Function that test return false when the value of card and other are diffrent and the suit is the same"""
+        other = Card(6, 3)
+        self.assertFalse(self.card.__eq__(other))
+        other = Card(10, 3)
+        self.assertFalse(self.card.__eq__(other))
+
+    # unnassery test- chack other function workes
     def test__eq__invalid_values(self):
         """Function that test that indeed the program will raise if the value of one of the cards is incourrect and __eq__ won't happen"""
         with self.assertRaises(ValueError):
@@ -146,12 +172,19 @@ class TestCard(TestCase):
         with self.assertRaises(ValueError):
             self.assertFalse(card=Card(12, 2).__eq__(other=Card(0, 2)))
 
+    # unnassery test- chack other function workes
     def test__eq__invalid_suits(self):
         """Function that test that indeed the program will raise if the suit of one of the cards is incourrect and __eq__ won't happen"""
         with self.assertRaises(ValueError):
             self.assertFalse(card=Card(9, 5).__eq__(other=Card(8, 1)))
         with self.assertRaises(ValueError):
             self.assertFalse(card=Card(6, 4).__eq__(other=Card(7, 0)))
+
+    def test__eq__invalid_same_card(self):
+        """Function that test that indeed the program will raise if they are the Same Card"""
+        other = Card(5,3)
+        with self.assertRaises(ValueError):
+            self.assertFalse(self.card.__eq__(other))
 
     def test__eq__invalid_other_type(self):
         """Function that test if the program raise with Type error when get's classes of other that isn't Card class"""
@@ -172,9 +205,9 @@ class TestCard(TestCase):
             self.card.__eq__(other)
 
 
-
-    def test_suit_name(self):
-        self.fail()
-
-    def test_value_name(self):
-        self.fail()
+#Opptional- if timeleft
+    # def test_suit_name(self):
+    #     self.fail()
+    #
+    # def test_value_name(self):
+    #     self.fail()

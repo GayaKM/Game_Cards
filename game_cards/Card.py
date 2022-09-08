@@ -42,7 +42,12 @@ class Card:
         if type(other) != Card:
             raise TypeError("Invalid variant: must be of Card class")
 
-        if self.card_value == other.card_value:
+        # chack that other is not the same card -USED_TO_BE_BUG
+        if self.card_suit == other.card_suit and self.card_value == other.card_value:
+            raise ValueError("Not possible  two of the same card in one deck")
+
+        # added the diffrent suit to see it's indeed thr same deck -ADDED_TO_BE_GLOBAL
+        if self.card_value == other.card_value and self.card_suit != other.card_suit:
             return True
         else:
             return False
