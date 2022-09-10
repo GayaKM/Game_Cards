@@ -24,4 +24,3 @@ class DeckOfCards:
         variant = random.choice(self.deck_list)
         self.deck_list.remove(variant)
         return variant
-

@@ -1,6 +1,6 @@
 from unittest import TestCase, mock
 from unittest.mock import patch
-from Card import Card
+from game_cards.Card import Card
 
 class TestCard(TestCase):
 
@@ -23,18 +23,14 @@ class TestCard(TestCase):
         """Function that test if the __init__ of Card worked when the values are in the edge of validtions"""
         card=Card(1,2)
         self.assertEqual(card.card_value, 1)
-        self.assertEqual(card.card_suit, 2)
         card = Card(13, 3)
         self.assertEqual(card.card_value, 13)
-        self.assertEqual(card.card_suit, 3)
 
     def test__init__valid_edge_suit(self):
         """Function that test if the __init__ of Card worked when the suits are in the edge of validtions"""
         card=Card(2,1)
-        self.assertEqual(card.card_value, 2)
         self.assertEqual(card.card_suit, 1)
         card = Card(12, 4)
-        self.assertEqual(card.card_value, 12)
         self.assertEqual(card.card_suit, 4)
 
     def test__init__invalid_values(self):
@@ -140,12 +136,8 @@ class TestCard(TestCase):
 
     #Test __eq__ Card
     def test__eq__valid_true(self):
-        """Function that test return true when the value of card and other are the same"""
-        other= Card(5,4)
-        self.assertTrue(self.card.__eq__(other))
-        other = Card(5, 2)
-        self.assertTrue(self.card.__eq__(other))
-        other = Card(5, 1)
+        """Function that test return true when the cards are the same"""
+        other= Card(5,3)
         self.assertTrue(self.card.__eq__(other))
 
     def test__eq__valid_false(self):
@@ -179,12 +171,6 @@ class TestCard(TestCase):
             self.assertFalse(card=Card(9, 5).__eq__(other=Card(8, 1)))
         with self.assertRaises(ValueError):
             self.assertFalse(card=Card(6, 4).__eq__(other=Card(7, 0)))
-
-    def test__eq__invalid_same_card(self):
-        """Function that test that indeed the program will raise if they are the Same Card"""
-        other = Card(5,3)
-        with self.assertRaises(ValueError):
-            self.assertFalse(self.card.__eq__(other))
 
     def test__eq__invalid_other_type(self):
         """Function that test if the program raise with Type error when get's classes of other that isn't Card class"""

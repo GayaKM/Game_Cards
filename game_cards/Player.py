@@ -14,6 +14,10 @@ class Player:
             raise TypeError("Invalid name: must be of string class")
         if type(number_of_cards) != int:
             raise TypeError("Invalid number: must be of integer class")
+        #chack that the name is only letters- -USED_TO_BE_BUG
+        if name.isalpha() == False:
+            raise ValueError("Player name must be only letters")
+
         self.player_name = name
         self.player_deck = []
         if number_of_cards < 10 or number_of_cards > 26:
@@ -40,5 +44,13 @@ class Player:
 
     def add_card(self,card:Card):
         """Function that receives a card and adds it to the deck of player"""
+        #chack that it's indeed card type-ADD_TO_BE_GLOBAL
+        if type(card) != Card:
+            raise TypeError("Invalid card: must be of Card class")
+
         self.player_deck.append(card)
 
+# player= Player("Orly", 15)
+# card= Card(5,3)
+# player.add_card(card)
+# print(player.player_deck)
