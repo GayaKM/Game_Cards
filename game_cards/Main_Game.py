@@ -3,19 +3,15 @@ from game_cards.DeckOfCards import DeckOfCards
 from game_cards.CardGame import CardGame
 from game_cards.Player import Player
 
-player1 = Player(input("Enter name of player 1: "),15)
-player2 = Player(input("Enter name of player 2: "),12)
+player1 = Player(input("Enter name of player 1: "))
+player2 = Player(input("Enter name of player 2: "))
 if player1.player_cards != player2.player_cards:
     player2 = Player(player2.player_name, player1.player_cards)
 this_game = CardGame(player1, player2)
-
-# so that new_game couldn't be used in the main-USED_TO_BE_BUG
 this_game.in_cardgame = False
 
 print(this_game)
-
-#add the print so it will lock good
-print(f"\n")
+#print(f"\n")
 
 for i in range(10):
     print(f'Round {i+1}')

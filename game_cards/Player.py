@@ -49,8 +49,3 @@ class Player:
             raise TypeError("Invalid card: must be of Card class")
 
         self.player_deck.append(card)
-
-# player= Player("Orly", 15)
-# card= Card(5,3)
-# player.add_card(card)
-# print(player.player_deck)

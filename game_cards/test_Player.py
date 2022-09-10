@@ -28,12 +28,8 @@ class TestPlayer(TestCase):
         """Function that test if the __init__ of Player worked when the number of cards is in the edge of validtions"""
         player = Player("Yuval", 26)
         self.assertEqual(player.player_cards, 26)
-        #self.assertEqual(player.player_name, "Yuval")
-        #self.assertListEqual(player.player_deck, [])
         player = Player("Gaya", 10)
         self.assertEqual(player.player_cards, 10)
-        # self.assertEqual(player.player_name, "Gaya")
-        # self.assertListEqual(player.player_deck, [])
 
     def test__init__invalid_player_cards(self):
         """Function that test if invalid value of player_cards, must be >10 qnd <26 the player_cards will be 26 """
@@ -178,7 +174,7 @@ class TestPlayer(TestCase):
             if self.player.player_deck[i] == c:
                 pass
 
-    def test_get_card_valid_value_edge(self):
+    def test_add_card_valid_value_edge(self):
        """Function that test that the card added to the player_deck in the edges of value validtion"""
        card = Card(13, 3)
        self.player.add_card(card)
@@ -191,7 +187,7 @@ class TestPlayer(TestCase):
            if self.player.player_deck[i] == card:
                pass
 
-    def test_get_card_valid_value_suit(self):
+    def test_add_card_valid_value_suit(self):
         """Function that test that the card added to the player_deck in the edges of suit validtion"""
         card= Card(5,1)
         self.player.add_card(card)

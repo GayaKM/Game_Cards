@@ -95,12 +95,10 @@ class TestCard(TestCase):
         self.assertTrue(self.card.__gt__(other))
 
     def test__gt__valid_other_same_as_card(self):
-        #that's valid only in the test of the function in the program it will not happen
         """Function that test that indeed returns false if they are the same card"""
         other= Card(5,3)
         self.assertFalse(self.card.__gt__(other))
 
-    # unnassery test- chack other function workes
     def test__gt__invalid_values(self):
         """Function that test that indeed the program will raise if the value of one of the cards is incourrect and __gt__ won't happen"""
         with self.assertRaises(ValueError):
@@ -108,7 +106,6 @@ class TestCard(TestCase):
         with self.assertRaises(ValueError):
             self.assertFalse(card=Card(12, 3).__gt__(other=Card(0, 3)))
 
-    # unnassery test- chack other function workes
     def test__gt__invalid_suits(self):
         """Function that test that indeed the program will raise if the suit of one of the cards is incourrect and __gt__ won't happen"""
         with self.assertRaises(ValueError):
@@ -156,7 +153,6 @@ class TestCard(TestCase):
         other = Card(10, 3)
         self.assertFalse(self.card.__eq__(other))
 
-    # unnassery test- chack other function workes
     def test__eq__invalid_values(self):
         """Function that test that indeed the program will raise if the value of one of the cards is incourrect and __eq__ won't happen"""
         with self.assertRaises(ValueError):
@@ -164,7 +160,6 @@ class TestCard(TestCase):
         with self.assertRaises(ValueError):
             self.assertFalse(card=Card(12, 2).__eq__(other=Card(0, 2)))
 
-    # unnassery test- chack other function workes
     def test__eq__invalid_suits(self):
         """Function that test that indeed the program will raise if the suit of one of the cards is incourrect and __eq__ won't happen"""
         with self.assertRaises(ValueError):
@@ -190,8 +185,7 @@ class TestCard(TestCase):
             other = {1: 2, 3: 4}
             self.card.__eq__(other)
 
-
-#Opptional- if timeleft
+    # Test suit_name-addition
     def test_suit_name_valid(self):
         """Function that test that suit_name take the number of the suit of the card and change it to its name"""
         self.assertEqual(self.card.suit_name(), "Heart")
@@ -214,9 +208,7 @@ class TestCard(TestCase):
             card = Card(5, -1)
             card.suit_name()
 
-
-    # def test_value_name(self):
-    #     self.fail()\
+    #Test value_name-addition
     def test_value_name_valid(self):
         """Function that test that valu_name take the number of the value of the card and change it to its name"""
         self.assertEqual(self.card.value_name(), "5")
