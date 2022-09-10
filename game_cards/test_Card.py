@@ -173,7 +173,7 @@ class TestCard(TestCase):
             self.assertFalse(card=Card(6, 4).__eq__(other=Card(7, 0)))
 
     def test__eq__invalid_other_type(self):
-        """Function that test if the program raise with Type error when get's classes of other that isn't Card class"""
+        """Function that test the program raise with Type error when get's classes of other that isn't Card class"""
         with self.assertRaises(TypeError):
             other = 2
             self.card.__eq__(other)
@@ -192,8 +192,53 @@ class TestCard(TestCase):
 
 
 #Opptional- if timeleft
-    # def test_suit_name(self):
-    #     self.fail()
-    #
+    def test_suit_name_valid(self):
+        """Function that test that suit_name take the number of the suit of the card and change it to its name"""
+        self.assertEqual(self.card.suit_name(), "Heart")
+        card= Card(5,1)
+        self.assertEqual(card.suit_name(), "Diamond")
+        card = Card(5, 2)
+        self.assertEqual(card.suit_name(), "Spade")
+        card = Card(5, 4)
+        self.assertEqual(card.suit_name(), "Club")
+
+    def test_suit_name_invalid_card_suit(self):
+        """Function that test the program raise with Value error when get's card with invalid suit"""
+        with self.assertRaises(ValueError):
+            card = Card(5, 5)
+            card.suit_name()
+        with self.assertRaises(ValueError):
+            card = Card(5, 0)
+            card.suit_name()
+        with self.assertRaises(ValueError):
+            card = Card(5, -1)
+            card.suit_name()
+
+
     # def test_value_name(self):
-    #     self.fail()
+    #     self.fail()\
+    def test_value_name_valid(self):
+        """Function that test that valu_name take the number of the value of the card and change it to its name"""
+        self.assertEqual(self.card.value_name(), "5")
+        card= Card(1,3)
+        self.assertEqual(card.value_name(), "Ace")
+        card = Card(11, 3)
+        self.assertEqual(card.value_name(), "Jack")
+        card = Card(12, 3)
+        self.assertEqual(card.value_name(), "Queen")
+        card = Card(13, 3)
+        self.assertEqual(card.value_name(), "King")
+
+    def test_value_name_invalid_card_value(self):
+        """Function that test the program raise with Value error when get's card with invalid value"""
+        with self.assertRaises(ValueError):
+            card = Card(14, 3)
+            card.suit_name()
+        with self.assertRaises(ValueError):
+            card = Card(0, 3)
+            card.suit_name()
+        with self.assertRaises(ValueError):
+            card = Card(-1, 3)
+            card.suit_name()
+
+
